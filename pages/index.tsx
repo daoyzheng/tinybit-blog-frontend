@@ -5,67 +5,16 @@ import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Tinybit Blog</title>
-        <meta name="description" content="Tinybit blog of programming, web development, learning and other things in life" />
-        <meta name="keywords" content="web development, programming, lifestyle" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
+    <div>
+      <div>Welcome to Tinybit Blog</div>
+      <div className="mt-6">
+        Interested? Visit Tinybit
+      </div>
+      <div className="mt-5 flex justify-between">
+        <div className="cursor-pointer">Development</div>
+        <div className="cursor-pointer">Life</div>
+      </div>
+      <div className="mt-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur sit dolore perspiciatis aliquam velit odit? Asperiores, facere, sunt architecto nulla perspiciatis omnis assumenda consectetur in ad quisquam, reprehenderit doloremque. Non.</div>
     </div>
   )
 }

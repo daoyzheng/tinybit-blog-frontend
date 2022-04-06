@@ -2,11 +2,7 @@ import styles from '../styles/Layout.module.css'
 import { ReactNode } from 'react'
 import Head from 'next/head'
 
-type Props = {
-  children?: ReactNode
-}
-
-const Layout = ({ children } : Props) => {
+const Layout : React.FC = ({ children }) => {
   return (
     <div className={styles.container}>
       <Head>

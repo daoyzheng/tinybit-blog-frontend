@@ -1,4 +1,4 @@
-import { IStrapiDataResponse } from './strapi'
+import { IStrapiListResponse, IStrapiSingleResponse } from './strapi'
 import { ICategory } from './category'
 import { ITag } from './tag'
 
@@ -7,6 +7,6 @@ export interface IPostItem {
   content: string
   publishedAt: string
   slug: string
-  category: IStrapiDataResponse<ICategory>
-  tags: IStrapiDataResponse<ITag>[]
+  category: IStrapiSingleResponse<ICategory>
+  tags: IStrapiListResponse<ITag>
 }

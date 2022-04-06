@@ -29,6 +29,6 @@ export const getList = async <T>(url: string, params?: Record<string, string>) :
   params = params || {}
   if (url.includes('posts')) params['populate'] = 'category,tags'
   const method = 'get'
-  const res = await request<IStrapiListResponse<T>>({ url, method })
+  const res = await request<IStrapiListResponse<T>>({ url, method, params })
   return res.data
 }

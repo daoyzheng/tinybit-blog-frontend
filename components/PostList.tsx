@@ -7,12 +7,13 @@ interface Props {
 }
 
 const PostList = ({ posts } : Props) => {
+  console.log('lkj', posts)
   return (
     <div>
-      {posts.map(post => (
+      {/* {posts.map(post => <div key={post.id}>{post.attributes.title}</div>)} */}
+      {posts.map(post =>
         <PostItem post={post} key={post.id}/>
-      ))}
-      <div></div>
+      )}
     </div>
   )
 }

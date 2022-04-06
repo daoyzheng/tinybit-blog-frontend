@@ -9,6 +9,7 @@ const PostItem = ({ post }: Props) => {
     <div className="flex">
       <div>{post.attributes.publishedAt}</div>
       <div>{post.attributes.title}</div>
+      {post.attributes.tags.data.map(tag => <div key={tag.id}>{tag.attributes.name}</div>)}
     </div>
   )
 }

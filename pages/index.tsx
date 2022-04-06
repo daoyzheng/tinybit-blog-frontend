@@ -2,16 +2,16 @@ import type { NextPage } from 'next'
 import { getList } from '../utils/request'
 import PostList from '../components/PostList'
 import { IPostItem } from '../interfaces/post'
+import { IStrapiDataResponse } from '../interfaces/strapi'
 // import Head from 'next/head'
 // import Image from 'next/image'
 // import styles from '../styles/Home.module.css'
 
 interface Props {
-  posts: IPostItem[]
+  posts: IStrapiDataResponse<IPostItem>[]
 }
 
 const Home: NextPage<Props> = ({ posts }) => {
-  console.log('klj', posts)
   return (
     <div>
       <div>Welcome to Tinybit Blog</div>
@@ -23,7 +23,7 @@ const Home: NextPage<Props> = ({ posts }) => {
         <div className="cursor-pointer">Personal</div>
       </div>
       <div className="mt-4">
-        {/* <PostList posts={posts} */}
+        <PostList posts={posts} />
       </div>
     </div>
   )

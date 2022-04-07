@@ -1,5 +1,6 @@
 import { IPostItem } from "../interfaces/post"
 import { IStrapiDataResponse } from "../interfaces/strapi"
+import TagIcon from './TagIcon'
 
 interface Props {
   post: IStrapiDataResponse<IPostItem>
@@ -7,9 +8,15 @@ interface Props {
 const PostItem = ({ post }: Props) => {
   return (
     <div className="flex">
-      <div>{post.attributes.publishedAt}</div>
-      <div>{post.attributes.title}</div>
-      {post.attributes.tags.data.map(tag => <div key={tag.id}>{tag.attributes.name}</div>)}
+      <div className="flex flex-row space-x-6">
+        <div>{new Date(post.attributes.publishedAt).toLocaleDateString('en')}</div>
+        <div>
+          <div>{post.attributes.title}</div>
+          <div className="flex space-x-1 grow-0 text-xs">
+            {post.attributes.tags.data.map(tag => <TagIcon key={tag.id} tag={tag.attributes.name}/>)}
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

@@ -7,9 +7,8 @@ interface Props {
 }
 
 const PostList = ({ posts } : Props) => {
-  console.log('lkj', posts)
   return (
-    <div>
+    <div className="space-y-5">
       {/* {posts.map(post => <div key={post.id}>{post.attributes.title}</div>)} */}
       {posts.map(post =>
         <PostItem post={post} key={post.id}/>

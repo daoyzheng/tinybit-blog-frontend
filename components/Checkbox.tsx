@@ -1,20 +1,16 @@
 import styles from '../styles/Checkbox.module.css'
-import { useState } from 'react'
+import { ChangeEvent } from 'react'
 interface Props {
   label: string
-  onClick: (isChecked: boolean) => void
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void
+  checked: boolean
 }
 
-const Checkbox = ({ label, onClick }: Props) => {
-  const [isChecked, setIsChecked] = useState(true);
-  const handleClick = () => {
-    setIsChecked(!isChecked)
-    onClick(isChecked)
-  }
+const Checkbox = ({ label, onChange, checked }: Props) => {
   return (
   <label className={styles.container}>
     {label}
-    <input type="checkbox" checked={isChecked} onChange={handleClick}/>
+    <input type="checkbox" checked={checked} onChange={onChange}/>
     <span className={styles.checkmark}></span>
   </label>
   )

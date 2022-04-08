@@ -11,7 +11,11 @@
 
 /* Hide the browser's default checkbox */
 .container input {
-  display: none;
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0
 }
 
 /* Create a custom checkbox */
@@ -40,6 +44,10 @@
 .container input:checked ~ .checkmark:after {
   display: block;
 }
+
+/* .container input ~ .checkmark:after {
+  display: none;
+} */
 
 /* Style the checkmark/indicator */
 .container .checkmark:after {

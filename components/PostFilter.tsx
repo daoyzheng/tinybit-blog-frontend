@@ -9,29 +9,25 @@ interface Props {
   availableTags: IStrapiDataResponse<ITag>[]
 }
 const PostFilter = ({ availableCategories, availableTags }: Props) => {
-  const [isChecked, setIsChecked] = useState(false)
-  const handleClick = () => {
-    setIsChecked(!isChecked)
-    console.log('lkj', isChecked)
+  const handleFilterChange = (value: string, name: string, checked: boolean) => {
+    console.log('lkj', value)
+    console.log('name', name)
+    console.log('jlkn', checked)
   }
   return (
     <div>
-      <div>Category</div>
-      <div className="flex flex-wrap">
+      <div className="mb-1">Category</div>
+      <hr className="bg-slate-600"/>
+      <div className="flex flex-wrap grow mt-2 gap-2">
         {availableCategories.map(category =>
-          <Checkbox label={category.attributes.name} key={category.id} onChange={handleClick} checked={isChecked}/>
-        )}
-        {availableCategories.map(category =>
-          <Checkbox label={category.attributes.name} key={category.id} onChange={handleClick} checked={isChecked}/>
-        )}
-        {availableCategories.map(category =>
-          <Checkbox label={category.attributes.name} key={category.id} onChange={handleClick} checked={isChecked}/>
+          <Checkbox label={category.attributes.name} key={category.id} onChange={handleFilterChange} name="category" defaultChecked/>
         )}
       </div>
-      <div className="mt-6 mb-3">Tag</div>
-      <div className="flex space-x-1">
+      <div className="mt-6 mb-1">Tag</div>
+      <hr/>
+      <div className="flex space-x-1 flex-wrap mt-2 gap-2">
         {availableTags.map(tag =>
-          <Checkbox label={tag.attributes.name} key={tag.id} onChange={handleClick} checked={isChecked}/>
+          <Checkbox label={tag.attributes.name} key={tag.id} onChange={handleFilterChange} name="tag" defaultChecked/>
         )}
       </div>
     </div>

@@ -28,7 +28,7 @@ const Popup : React.FC<Props> = ({ children, parent, showPopup, setShowPopup }: 
   return (
     <div className="relative w-fit">
       <div ref={wrapperRef}>
-        {parent}
+        <div>{parent}</div>
         <div className={`${styles.popup} ${showPopup ? `${styles.opacityFull}` : `${styles.opacityZero}`}`}>
           {children}
         </div>

@@ -29,11 +29,11 @@ const Home: NextPage<Props> = ({ posts, categories, tags }) => {
       <div className="mt-6">
         This is the author&apos;s knowledge bank and personal records. Want to know more about the author? Visit Tinybit
       </div>
-      <div className="mt-10 flex justify-end">
+      <div className="mt-10 flex justify-end items-center">
+        <input className="mr-2"/>
         <Popup showPopup={showPopup} setShowPopup={setShowPopup} parent={<FilterIcon className="cursor-pointer" onClick={handleFilterClick}/>}>
           <PostFilter availableCategories={categories} availableTags={tags}/>
         </Popup>
-        {/* <input className="appearance-none"/> */}
       </div>
       <div className="mt-5">
         <PostList posts={posts} />

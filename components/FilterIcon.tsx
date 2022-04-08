@@ -1,14 +1,21 @@
-const FilterIcon = () => {
+import { MouseEventHandler } from 'react'
+import styles from '../styles/FilterIcon.module.css'
+
+interface Props {
+  className: string
+  onClick: () => void
+}
+const FilterIcon = ({ className, onClick } : Props) => {
   return (
-    <div>
-      <div className="vert-line-1">
-        <div className="hor-line-1"></div>
+    <div className={`${className} ${styles.container}`} onClick={onClick}>
+      <div className={styles.vertLine}>
+        <div className={`${styles.horLine} ${styles.horLine1}`}></div>
       </div>
-      <div className="vert-line-2">
-        <div className="hor-line-2"></div>
+      <div className={styles.vertLine}>
+        <div className={`${styles.horLine} ${styles.horLine2}`}></div>
       </div>
-      <div className="vert-line-3">
-        <div className="hor-line-3"></div>
+      <div className={styles.vertLine}>
+        <div className={`${styles.horLine} ${styles.horLine3}`}></div>
       </div>
     </div>
   )

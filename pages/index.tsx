@@ -3,13 +3,15 @@ import { getList } from '../utils/request'
 import PostList from '../components/PostList'
 import { IPostItem } from '../interfaces/post'
 import { IStrapiDataResponse } from '../interfaces/strapi'
-import Checkbox from '../components/Checkbox'
 // import Head from 'next/head'
 // import Image from 'next/image'
 // import styles from '../styles/Home.module.css'
 import { useState } from 'react'
 import { ICategory } from '../interfaces/category'
 import { ITag } from '../interfaces/tag'
+import FilterIcon from '../components/FilterIcon'
+import Popup from '../components/Popup'
+import PostFilter from '../components/PostFilter'
 
 interface Props {
   posts: IStrapiDataResponse<IPostItem>[]
@@ -17,28 +19,23 @@ interface Props {
   tags: IStrapiDataResponse<ITag>[]
 }
 const Home: NextPage<Props> = ({ posts, categories, tags }) => {
-  const [isChecked, setIsChecked] = useState(false)
-  const handleClick = () => {
-    setIsChecked(!isChecked)
-    console.log('lkj', isChecked)
+  const [showPopup, setShowPopup] = useState(false)
+  const handleFilterClick = () => {
+    setShowPopup(!showPopup)
   }
-  console.log('tags', tags)
   return (
     <div>
       <div>Welcome to Tinybit Blog</div>
       <div className="mt-6">
         This is the author&apos;s knowledge bank and personal records. Want to know more about the author? Visit Tinybit
       </div>
-      <div className="mt-5 flex justify-center">
-        <div className="flex space-x-1">
-          <input className="appearance-none"/>
-          {categories.map(category =>
-            <Checkbox label={category.attributes.name} key={category.id} onChange={handleClick} checked={isChecked}/>
-          )}
-        </div>
+      <div className="mt-10 flex justify-end">
+        <Popup showPopup={showPopup} setShowPopup={setShowPopup} parent={<FilterIcon className="cursor-pointer" onClick={handleFilterClick}/>}>
+          <PostFilter availableCategories={categories} availableTags={tags}/>
+        </Popup>
+        {/* <input className="appearance-none"/> */}
       </div>
       <div className="mt-5">
-        {isChecked ? 'true' : 'false'}
         <PostList posts={posts} />
       </div>
     </div>

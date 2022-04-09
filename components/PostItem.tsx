@@ -11,7 +11,7 @@ const PostItem = ({ post }: Props) => {
       <div className="flex flex-row space-x-6">
         <div>{new Date(post.attributes.publishedAt).toLocaleDateString('en')}</div>
         <div>
-          <div>{post.attributes.title}</div>
+          <div className="break-all">{post.attributes.title}lkseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</div>
           <div className="flex space-x-1 grow-0 text-xs">
             {post.attributes.tags.data.map(tag => <TagIcon key={tag.id} tag={tag.attributes.name}/>)}
           </div>

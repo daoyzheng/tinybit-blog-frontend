@@ -32,8 +32,6 @@ const Popup : React.FC<Props> = ({ children, parent, showPopup, setShowPopup }: 
         <PopupContainer showPopup={showPopup}>
           {children}
         </PopupContainer>
-        {/* <div className={`${styles.popup} ${showPopup ? `${styles.opacityFull}` : `${styles.opacityZero}`}`}>
-        </div> */}
       </div>
     </div>
   )

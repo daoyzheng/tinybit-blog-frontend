@@ -43,11 +43,13 @@ const Theme: React.FC<Props> = ({ children, theme }) => {
   }
 
   return (
-    <ThemeProvider theme={getTheme}>
-      <StyledApp>
-        {children}
-      </StyledApp>
-    </ThemeProvider>
+    <div>
+      <ThemeProvider theme={getTheme}>
+        <StyledApp>
+          {children}
+        </StyledApp>
+      </ThemeProvider>
+    </div>
   )
 }
 

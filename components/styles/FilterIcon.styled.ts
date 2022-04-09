@@ -43,13 +43,13 @@ export const FilterIconContainer = styled.div`
   height: 20px;
   justify-content: space-between;
   &:hover {
-    ${HorizontalLineLeft} {
+    div:first-child div{
       animation: ${downward} 500ms
     }
-    ${HorizontalLineMiddle} {
+    div:nth-child(2) div {
       animation: ${upward} 500ms
     }
-    ${HorizontalLineRight} {
+    div:nth-child(3) div {
       animation: ${downward} 500ms
     }
   }

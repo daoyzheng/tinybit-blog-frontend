@@ -1,10 +1,9 @@
-import styles from '../styles/Layout.module.css'
-import { ReactNode } from 'react'
 import Head from 'next/head'
+import { LayoutContainer } from './styles/Layout.styled'
 
 const Layout : React.FC = ({ children }) => {
   return (
-    <div className={styles.container}>
+    <LayoutContainer>
       <Head>
         <title>Tinybit Blog</title>
         <meta name="description" content="Tinybit blog of programming, web development, learning and other things in life" />
@@ -16,7 +15,7 @@ const Layout : React.FC = ({ children }) => {
           {children}
         </main>
       </div>
-    </div>
+    </LayoutContainer>
   )
 }
 

@@ -9,7 +9,6 @@ interface Props {
 const PostList = ({ posts } : Props) => {
   return (
     <div className="space-y-5">
-      {/* {posts.map(post => <div key={post.id}>{post.attributes.title}</div>)} */}
       {posts.map(post =>
         <PostItem post={post} key={post.id}/>
       )}

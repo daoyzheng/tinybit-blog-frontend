@@ -1,5 +1,8 @@
-import { MouseEventHandler } from 'react'
-import styles from '../styles/FilterIcon.module.css'
+import {
+  VerticalLine, HorizontalLineLeft,
+  HorizontalLineMiddle, HorizontalLineRight,
+  FilterIconContainer
+} from './styles/FilterIcon.styled'
 
 interface Props {
   className: string
@@ -7,17 +10,17 @@ interface Props {
 }
 const FilterIcon = ({ className, onClick } : Props) => {
   return (
-    <div className={`${className} ${styles.container}`} onClick={onClick}>
-      <div className={styles.vertLine}>
-        <div className={`${styles.horLine} ${styles.horLine1}`}></div>
-      </div>
-      <div className={styles.vertLine}>
-        <div className={`${styles.horLine} ${styles.horLine2}`}></div>
-      </div>
-      <div className={styles.vertLine}>
-        <div className={`${styles.horLine} ${styles.horLine3}`}></div>
-      </div>
-    </div>
+    <FilterIconContainer className={className} onClick={onClick}>
+      <VerticalLine>
+        <HorizontalLineLeft />
+      </VerticalLine>
+      <VerticalLine>
+        <HorizontalLineMiddle />
+      </VerticalLine>
+      <VerticalLine>
+        <HorizontalLineRight />
+      </VerticalLine>
+    </FilterIconContainer>
   )
 }
 

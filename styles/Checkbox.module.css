@@ -30,7 +30,7 @@
 
 /* On mouse-over, add a grey background color */
 .container:hover input ~ .checkmark {
-  border: 1px solid rgb(190, 190, 190)
+  border: 1px solid rgb(163, 163, 163)
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -44,10 +44,6 @@
 .container input:checked ~ .checkmark:after {
   display: block;
 }
-
-/* .container input ~ .checkmark:after {
-  display: none;
-} */
 
 /* Style the checkmark/indicator */
 .container .checkmark:after {

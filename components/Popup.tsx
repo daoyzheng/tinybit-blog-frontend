@@ -1,5 +1,5 @@
-import styles from '../styles/Popup.module.css'
-import { MouseEventHandler, RefObject, SetStateAction, useEffect, useRef } from 'react'
+import { RefObject, SetStateAction, useEffect, useRef } from 'react'
+import { PopupContainer } from './styles/Popup.styled'
 
 interface Props {
   parent: React.ReactNode
@@ -29,9 +29,11 @@ const Popup : React.FC<Props> = ({ children, parent, showPopup, setShowPopup }: 
     <div className="relative w-fit">
       <div ref={wrapperRef}>
         <div>{parent}</div>
-        <div className={`${styles.popup} ${showPopup ? `${styles.opacityFull}` : `${styles.opacityZero}`}`}>
+        <PopupContainer showPopup={showPopup}>
           {children}
-        </div>
+        </PopupContainer>
+        {/* <div className={`${styles.popup} ${showPopup ? `${styles.opacityFull}` : `${styles.opacityZero}`}`}>
+        </div> */}
       </div>
     </div>
   )

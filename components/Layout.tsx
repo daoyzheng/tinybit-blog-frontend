@@ -1,7 +1,11 @@
 import Head from 'next/head'
 import { LayoutContainer } from './styles/Layout.styled'
 
-const Layout : React.FC = ({ children }) => {
+interface Props {
+  setting?: React.ReactNode
+}
+
+const Layout : React.FC<Props> = ({ children, setting }) => {
   return (
     <LayoutContainer>
       <Head>
@@ -10,10 +14,13 @@ const Layout : React.FC = ({ children }) => {
         <meta name="keywords" content="web development, programming, lifestyle" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="max-w-screen-md w-full">
-        <main>
-          {children}
-        </main>
+      <div>{setting}</div>
+      <div className="flex w-full justify-center">
+        <div className="max-w-screen-md w-full">
+          <main>
+            {children}
+          </main>
+        </div>
       </div>
     </LayoutContainer>
   )

@@ -1,17 +1,14 @@
 import styled, { ThemeProvider } from 'styled-components'
-import { useState } from 'react'
-
-enum THEME {
-  light = 'light',
-  dark = 'dark'
-}
+import { THEME } from '../utils/constants'
 
 const StyledApp = styled.div`
   background-color: ${props => props.theme.backgroundColor};
   color: ${props => props.theme.fontColor};
 `
-const Theme: React.FC = ({ children }) => {
-  const [theme, setTheme] = useState(THEME.dark)
+interface Props {
+  theme: string
+}
+const Theme: React.FC<Props> = ({ children, theme }) => {
 
   const lightTheme = {
     backgroundColor: '#dbc1a4',
@@ -43,10 +40,6 @@ const Theme: React.FC = ({ children }) => {
       case THEME.dark:
         return darkTheme
     }
-  }
-
-  const themeToggler = () => {
-    theme === THEME.light ? setTheme(THEME.light) : setTheme(THEME.dark)
   }
 
   return (

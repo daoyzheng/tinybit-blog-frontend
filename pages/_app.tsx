@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <Theme theme={theme}>
-      <Layout setting={<Setting onThemeToggle={themeToggler} className="mb-16 flex justify-end lg:mr-80"/>}>
+      <Layout setting={<Setting onThemeToggle={themeToggler} className="mb-16 flex justify-end lg:mr-72"/>}>
         <Component {...pageProps} />
       </Layout>
     </Theme>

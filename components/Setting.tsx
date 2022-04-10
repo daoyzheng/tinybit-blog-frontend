@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Image from 'next/image'
+import LocalizationPicker from "./LocalizationPicker"
 
 interface Props {
   onThemeToggle?: (isDark: boolean) => void
@@ -13,7 +14,8 @@ const Setting = ({ onThemeToggle, className }: Props) => {
     setIsDark(!isDark)
   }
   return (
-    <div className={className}>
+    <div className={`${className} items-center gap-4`}>
+      <LocalizationPicker className="mr-20"/>
       <Image src={isDark ? '/lightbulb-off.png' : '/lightbulb-on.png'} width="30px" height="30px" alt="lightbulb off" onClick={handleThemeToggle} className="cursor-pointer"/>
     </div>
   )

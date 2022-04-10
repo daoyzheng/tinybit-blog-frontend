@@ -1,19 +1,20 @@
 import { useState } from "react"
+import Image from 'next/image'
 
 interface Props {
-  onToggle: (isDark: boolean) => void
+  onThemeToggle?: (isDark: boolean) => void
   className?: string
 }
 
-const Setting = ({ onToggle, className }: Props) => {
+const Setting = ({ onThemeToggle, className }: Props) => {
   const [isDark, setIsDark] = useState(true)
-  const handleOnClick = () => {
-    onToggle(!isDark)
+  const handleThemeToggle = () => {
+    if (onThemeToggle) onThemeToggle(!isDark)
     setIsDark(!isDark)
   }
   return (
     <div className={className}>
-      <button onClick={handleOnClick}>Toggle</button>
+      <Image src={isDark ? '/lightbulb-off.png' : '/lightbulb-on.png'} width="30px" height="30px" alt="lightbulb off" onClick={handleThemeToggle} className="cursor-pointer"/>
     </div>
   )
 }

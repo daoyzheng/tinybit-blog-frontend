@@ -5,12 +5,13 @@ import Link from 'next/link'
 
 interface Props {
   post: IStrapiDataResponse<IPostItem>
+  showDate: boolean
 }
-const PostItem = ({ post }: Props) => {
+const PostItem = ({ post, showDate }: Props) => {
   return (
     <div className="flex">
       <div className="flex flex-row space-x-6">
-        <div>{new Date(post.attributes.publishedAt).toLocaleDateString('en')}</div>
+        { showDate ? <div>{new Date(post.attributes.publishedAt).toLocaleDateString('en')}</div> : <></>}
         <div>
           <Link href="/post/[slug]" as={`/post/${post.attributes.slug}`}>
             <a className="break-all">{post.attributes.title}</a>

@@ -4,16 +4,21 @@ import PostItem from "./PostItem"
 
 interface Props {
   posts: IStrapiDataResponse<IPostItem>[]
+  showDate: boolean
 }
 
-const PostList = ({ posts } : Props) => {
+const PostList = ({ posts, showDate } : Props) => {
   return (
     <div className="space-y-5">
       {posts.map(post =>
-        <PostItem post={post} key={post.id}/>
+        <PostItem post={post} key={post.id} showDate={showDate}/>
       )}
     </div>
   )
+}
+
+PostList.defaultProps = {
+  showDate: false
 }
 
 export default PostList

@@ -31,7 +31,7 @@ const Post : NextPage<Props> = ({ posts, categories, tags }) => {
         </Popup>
       </div>
       <div className="mt-5">
-        <PostList posts={posts} />
+        <PostList posts={posts} showDate/>
       </div>
     </div>
   )

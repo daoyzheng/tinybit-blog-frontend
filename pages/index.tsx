@@ -12,6 +12,7 @@ import { ITag } from '../interfaces/tag'
 import FilterIcon from '../components/FilterIcon'
 import Popup from '../components/Popup'
 import PostFilter from '../components/PostFilter'
+import useGetLocale from '../hooks/useGetLocale'
 
 interface Props {
   posts: IStrapiDataResponse<IPostItem>[]
@@ -20,6 +21,8 @@ interface Props {
 }
 const Home: NextPage<Props> = ({ posts, categories, tags }) => {
   const [showPopup, setShowPopup] = useState(false)
+
+  const locale = useGetLocale()
   const handleFilterClick = () => {
     setShowPopup(!showPopup)
   }
@@ -27,7 +30,7 @@ const Home: NextPage<Props> = ({ posts, categories, tags }) => {
     <div>
       <div>Welcome to Tinybit Blog</div>
       <div className="mt-6">
-        Hi, I&apos;m Dao. This is my knowledge bank and where I keep my personal records. Want to know more? Visit Tinybit
+        {locale.welcomeMessage}
       </div>
       <div className="mt-10 flex justify-end items-center">
         <input className="mr-2"/>

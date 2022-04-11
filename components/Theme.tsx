@@ -11,11 +11,11 @@ interface Props {
 const Theme: React.FC<Props> = ({ children, theme }) => {
 
   const lightTheme = {
-    backgroundColor: '#dbc1a4',
+    backgroundColor: '#fff',
     fontColor: '#000',
     filterIconVerticalLineBackground: 'rgb(64, 64, 64)',
     filterIconHorizontalLineBackground: 'rgb(92, 92, 92)',
-    popupBackgroundColor: 'rgba(219, 193, 164, 0.95)',
+    popupBackgroundColor: '#fff',
     popupBorderColor: 'rgb(75, 75, 75)',
     tagIconColor: '#044072',
     tagIconBorderColor: '#999999'

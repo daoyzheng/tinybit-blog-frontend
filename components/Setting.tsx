@@ -15,7 +15,7 @@ const Setting = ({ onThemeToggle, className }: Props) => {
   }
   return (
     <div className={`${className} items-center gap-4`}>
-      <LocalizationPicker className="mr-20"/>
+      <LocalizationPicker className="mr-3 mt-1"/>
       <Image src={isDark ? '/lightbulb-off.png' : '/lightbulb-on.png'} width="30px" height="30px" alt="lightbulb off" onClick={handleThemeToggle} className="cursor-pointer"/>
     </div>
   )

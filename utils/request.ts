@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios"
-import { IStrapiListResponse } from "../interfaces/strapi"
+import { IStrapiListResponse, IStrapiSingleResponse } from "../interfaces/strapi"
 
 type AllowableTypes = 'get' | 'GET' | 'post' | 'POST' | 'put' | 'PUT' | 'PATCH' | 'patch' | 'delete' | 'DELETE'
 interface IRequest {
@@ -16,6 +16,7 @@ const request = async <T>({ url, method, params, body, headers } : IRequest) : P
     // Authorization: `Bearer ${token}`,
     'Content-Type': 'application/json'
   })
+  params = params || {}
   const response = await axios(`${baseUrl}/${url}`, {
     method,
     ...(body && { body }),
@@ -25,10 +26,23 @@ const request = async <T>({ url, method, params, body, headers } : IRequest) : P
   return response
 }
 
-export const getList = async <T>(url: string, params?: Record<string, string>) : Promise<IStrapiListResponse<T>> => {
-  params = params || {}
-  if (url.includes('posts')) params['populate'] = 'category,tags'
+axios.interceptors.request.use((config) => {
+  const { method, url, params } = config
+  if (method === 'get' && url?.includes('posts'))
+  params['populate'] = 'category,tags'
+  return config
+}, (error) => {
+  return Promise.reject(error);
+})
+
+export const getList = async <T>(url: string, params?: Record<string, string>): Promise<IStrapiListResponse<T>> => {
   const method = 'get'
   const res = await request<IStrapiListResponse<T>>({ url, method, params })
+  return res.data
+}
+
+export const get = async <T>(url: string, params?: Record<string, string>): Promise<IStrapiSingleResponse<T>> => {
+  const method = 'get'
+  const res = await request<IStrapiSingleResponse<T>>({ url, params, method })
   return res.data
 }

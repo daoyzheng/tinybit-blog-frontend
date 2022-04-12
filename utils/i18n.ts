@@ -6,7 +6,7 @@ const i18n = {
   },
   zh: {
     title: '欢迎来到Tinybit的博客',
-    welcomeMessage: '你好， 我叫Dao. 这里是我的知识库和一些个人纪录。 想知道更多？ 看看 Tinybit',
+    welcomeMessage: '读者好，我叫Dao。 这里是我的知识库和一些个人纪录。 想知道更多？ 看看 Tinybit',
     recentPosts: '最近记载'
   }
 }

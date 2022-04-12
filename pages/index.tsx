@@ -3,11 +3,10 @@ import { getList } from '../utils/request'
 import PostList from '../components/PostList'
 import { IPostItem } from '../interfaces/post'
 import { IStrapiDataResponse } from '../interfaces/strapi'
-// import Head from 'next/head'
-// import Image from 'next/image'
-// import styles from '../styles/Home.module.css'
 import useGetLocale from '../hooks/useGetLocale'
 import { SubTitle, Title } from '../components/styles/Title.styled'
+import Link from 'next/link'
+import { A } from '../components/styles/hyperlink.styled'
 
 interface Props {
   posts: IStrapiDataResponse<IPostItem>[]
@@ -17,9 +16,19 @@ const Home: NextPage<Props> = ({ posts }) => {
   const locale = useGetLocale()
   return (
     <div>
-      <Title>{locale.title}</Title>
+      <div className="flex justify-between items-center">
+        <Title>{locale.title}</Title>
+        <div className="space-x-4 flex">
+          <Link href="/post" passHref>
+            <A>Posts</A>
+          </Link>
+          <Link href="/tag" passHref>
+            <A>Tags</A>
+          </Link>
+        </div>
+      </div>
       <div className="mt-6">
-        {locale.welcomeMessage}
+        <div>{locale.welcomeMessage}</div>
       </div>
       <SubTitle className="mt-5">{locale.recentPosts}</SubTitle>
       <div className="mt-5">

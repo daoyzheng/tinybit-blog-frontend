@@ -5,6 +5,7 @@ import { GetStaticPaths, GetServerSideProps } from 'next'
 import Custom404 from "../../404"
 import TagIcon from "../../../components/TagIcon"
 import Title from "../../../components/Titile"
+import CategoryIcon from "../../../components/CategoryIcon"
 
 
 interface Props {
@@ -16,10 +17,16 @@ const PostDetails = ({ postDetails }: Props) => {
     <div>
       <Title title={postDetails.attributes.title}/>
       <div className="mt-6 break-all">{postDetails.attributes.content}</div>
-      <div className="flex items-center gap-1 flex-wrap mt-10">
-        <div>Tags: </div>
-        <div className="flex gap-1 items-center flex-wrap">
-          {postDetails.attributes.tags.data.map(tag => <TagIcon key={tag.id} tag={tag}/>)}
+      <div className="mt-10">
+        <div className="flex items-center gap-2">
+          <div>Category: </div>
+          <CategoryIcon category={postDetails.attributes.category.data} />
+        </div>
+        <div className="flex items-center gap-2 flex-wrap mt-2">
+          <div>Tags: </div>
+          <div className="flex gap-1 items-center flex-wrap">
+            {postDetails.attributes.tags.data.map(tag => <TagIcon key={tag.id} tag={tag}/>)}
+          </div>
         </div>
       </div>
     </div>

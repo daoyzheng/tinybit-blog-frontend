@@ -11,14 +11,15 @@ interface Props {
 const Theme: React.FC<Props> = ({ children, theme }) => {
 
   const lightTheme = {
-    backgroundColor: '#f1e9c8',
+    backgroundColor: '#fff',
     fontColor: '#000',
     filterIconVerticalLineBackground: 'rgb(64, 64, 64)',
     filterIconHorizontalLineBackground: 'rgb(92, 92, 92)',
     popupBackgroundColor: '#f1e9c8',
     popupBorderColor: 'rgb(75, 75, 75)',
-    tagIconColor: '#044072',
-    tagIconBorderColor: '#999999'
+    tagIconColor: '#F87171',
+    tagIconBorderColor: '#999999',
+    sortIconColor: 'rgb(64, 64, 64)'
   }
 
   const darkTheme = {
@@ -29,7 +30,8 @@ const Theme: React.FC<Props> = ({ children, theme }) => {
     popupBackgroundColor: 'rgba(32, 32, 32, 0.95)',
     popupBorderColor: 'rgb(75, 75, 75)',
     tagIconColor: '#F87171',
-    tagIconBorderColor: '#525252'
+    tagIconBorderColor: '#525252',
+    sortIconColor: 'rgb(158, 158, 158)'
   }
 
 

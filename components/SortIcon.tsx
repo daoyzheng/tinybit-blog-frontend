@@ -1,8 +1,12 @@
 import { ArrowLine, DownArrowContainer, LeftArrow, RightArrow, SortIconContainer } from "./styles/SortIcon.styled"
 
-const SortIcon = () => {
+interface Props {
+  onClick: () => void
+}
+
+const SortIcon = ({ onClick }: Props) => {
   return (
-    <SortIconContainer>
+    <SortIconContainer onClick={onClick}>
       <div>
         <ArrowLine><LeftArrow /></ArrowLine>
         <ArrowLine><LeftArrow /></ArrowLine>

@@ -7,6 +7,7 @@ import { IStrapiDataResponse } from '../interfaces/strapi'
 // import Image from 'next/image'
 // import styles from '../styles/Home.module.css'
 import useGetLocale from '../hooks/useGetLocale'
+import { SubTitle, Title } from '../components/styles/Title.styled'
 
 interface Props {
   posts: IStrapiDataResponse<IPostItem>[]
@@ -16,11 +17,11 @@ const Home: NextPage<Props> = ({ posts }) => {
   const locale = useGetLocale()
   return (
     <div>
-      <div>{locale.title}</div>
+      <Title>{locale.title}</Title>
       <div className="mt-6">
         {locale.welcomeMessage}
       </div>
-      <div className="mt-5">Recent posts</div>
+      <SubTitle className="mt-5">{locale.recentPosts}</SubTitle>
       <div className="mt-5">
         <PostList posts={posts} />
       </div>

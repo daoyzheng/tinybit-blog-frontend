@@ -12,13 +12,10 @@ interface Props {
 const PostDetails = ({ postDetails }: Props) => {
   return postDetails ? (
     <div>
-      <div className="flex items-center justify-between mb-1">
-        <div>Prev post</div>
-        <div>Next post</div>
-      </div>
-      <div className="mt-6 text-center">
+      <div className="text-center">
         {postDetails.attributes.title}
       </div>
+      <div className="mt-8">{postDetails.attributes.content}</div>
     </div>
   ) : <Custom404/>
 }

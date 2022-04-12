@@ -20,9 +20,18 @@ interface Props {
 
 const Post : NextPage<Props> = ({ posts, categories, tags }) => {
   const [showPopup, setShowPopup] = useState(false)
+  const [sort, setSort] = useState(descendingPublishDate)
   const handleFilterClick = () => {
     setShowPopup(!showPopup)
   }
+  const handleSortClick = () => {
+    if (sort[0] == descendingPublishDate[0]) {
+      setSort(ascendingPublishDate)
+      return
+    }
+    setSort(descendingPublishDate)
+  }
+
   return (
     <div>
       <div>Posts</div>
@@ -31,7 +40,7 @@ const Post : NextPage<Props> = ({ posts, categories, tags }) => {
         <Popup showPopup={showPopup} setShowPopup={setShowPopup} parent={<FilterIcon className="cursor-pointer" onClick={handleFilterClick}/>}>
           <PostFilter availableCategories={categories} availableTags={tags}/>
         </Popup>
-        <SortIcon/>
+        <SortIcon onClick={handleSortClick}/>
       </div>
       <div className="mt-5">
         <PostList posts={posts} showDate/>

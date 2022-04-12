@@ -14,9 +14,9 @@ const Setting = ({ onThemeToggle, className }: Props) => {
     setIsDark(!isDark)
   }
   return (
-    <div className={`${className} items-center gap-4`}>
-      <LocalizationPicker className="mr-3 mt-1"/>
-      <Image src={isDark ? '/lightbulb-off.png' : '/lightbulb-on.png'} width="30" height="30" alt="lightbulb off" onClick={handleThemeToggle} className="cursor-pointer"/>
+    <div className={`${className} items-center gap-2`}>
+      <LocalizationPicker className="mt-1 text-sm"/>
+      <Image src={isDark ? '/lightbulb-off.png' : '/lightbulb-on.png'} width="25" height="25" alt="lightbulb off" onClick={handleThemeToggle} className="cursor-pointer"/>
     </div>
   )
 }

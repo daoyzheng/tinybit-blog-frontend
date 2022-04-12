@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components'
 export const ArrowLine = styled.div`
   height: 20px;
   width: 2px;
-  background-color: red;
+  background-color: ${props => props.theme.sortIconColor};
   position: relative;
   transition: transform
 `
@@ -11,7 +11,7 @@ export const ArrowLine = styled.div`
 export const LeftArrow = styled.div`
   width: 6px;
   height: 6px;
-  border: solid yellow;
+  border: solid ${props => props.theme.sortIconColor};
   border-width: 0 2px 2px 0;
   position: absolute;
   transform: rotate(225deg);
@@ -22,7 +22,7 @@ export const LeftArrow = styled.div`
 export const RightArrow = styled.div`
   width: 6px;
   height: 6px;
-  border: solid yellow;
+  border: solid ${props => props.theme.sortIconColor};
   border-width: 0 2px 2px 0;
   position: absolute;
   transform: rotate(45deg);

@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-export const Title = styled.div`
+export const TitleContainer = styled.div`
   font-size: 20px;
   color: #cb8300;
 `
 
-export const SubTitle = styled.div`
+export const SubTitleContainer = styled.div`
   font-size: 18px;
   color: #cb8300;
 `

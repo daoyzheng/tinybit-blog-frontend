@@ -4,9 +4,7 @@ import { getList } from "../../../utils/request"
 import { GetStaticPaths, GetServerSideProps } from 'next'
 import Custom404 from "../../404"
 import TagIcon from "../../../components/TagIcon"
-import Link from "next/link"
-import { A } from "../../../components/styles/hyperlink.styled"
-import { Title } from "../../../components/styles/Title.styled"
+import Title from "../../../components/Titile"
 
 
 interface Props {
@@ -16,25 +14,12 @@ interface Props {
 const PostDetails = ({ postDetails }: Props) => {
   return postDetails ? (
     <div>
-      <div className="flex justify-between items-center">
-        <Title>{postDetails.attributes.title}</Title>
-        <div className="gap-2 flex">
-          <Link href="/" passHref>
-            <A>Home</A>
-          </Link>
-          <Link href="/post" passHref>
-            <A>Posts</A>
-          </Link>
-          <Link href="/tag" passHref>
-            <A>Tags</A>
-          </Link>
-        </div>
-      </div>
+      <Title title={postDetails.attributes.title}/>
       <div className="mt-6 break-all">{postDetails.attributes.content}</div>
       <div className="flex items-center gap-1 flex-wrap mt-10">
         <div>Tags: </div>
         <div className="flex gap-1 items-center flex-wrap">
-          {postDetails.attributes.tags.data.map(tag => <TagIcon key={tag.id} tag={tag.attributes.name}/>)}
+          {postDetails.attributes.tags.data.map(tag => <TagIcon key={tag.id} tag={tag}/>)}
         </div>
       </div>
     </div>

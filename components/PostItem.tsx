@@ -18,7 +18,7 @@ const PostItem = ({ post, showDate }: Props) => {
             <PostItemLink className="break-all">{post.attributes.title}</PostItemLink>
           </Link>
           <div className="flex gap-1 flex-wrap">
-            {post.attributes.tags.data.map(tag => <TagIcon key={tag.id} tag={tag.attributes.name}/>)}
+            {post.attributes.tags.data.map(tag => <TagIcon key={tag.id} tag={tag}/>)}
           </div>
         </div>
       </div>

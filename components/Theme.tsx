@@ -19,7 +19,8 @@ const Theme: React.FC<Props> = ({ children, theme }) => {
     popupBorderColor: 'rgb(75, 75, 75)',
     tagIconColor: '#F87171',
     tagIconBorderColor: '#999999',
-    sortIconColor: 'rgb(64, 64, 64)'
+    sortIconColor: 'rgb(64, 64, 64)',
+    categoryIconColor: '#18745b'
   }
 
   const darkTheme = {
@@ -31,7 +32,8 @@ const Theme: React.FC<Props> = ({ children, theme }) => {
     popupBorderColor: 'rgb(75, 75, 75)',
     tagIconColor: '#F87171',
     tagIconBorderColor: '#525252',
-    sortIconColor: 'rgb(158, 158, 158)'
+    sortIconColor: 'rgb(158, 158, 158)',
+    categoryIconColor: '#52d7b2'
   }
 
 

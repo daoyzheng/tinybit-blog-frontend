@@ -15,7 +15,7 @@ const CategoryIcon = ({ category, className }: Props) => {
     router.push(`category/${category.attributes.name}`, undefined, { locale })
   }
   return (
-    <CategoryIconWrapper className={`border rounded-md text-center p-0.5 text-xs cursor-pointer w-fit ${className}`} onClick={handleOnClick}>
+    <CategoryIconWrapper className={`rounded-md text-center p-0.5 text-sm cursor-pointer w-fit ${className}`} onClick={handleOnClick}>
       {category.attributes.name}
     </CategoryIconWrapper>
   )

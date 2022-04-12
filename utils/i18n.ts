@@ -2,6 +2,7 @@ const i18n = {
   en: {
     posts: 'Posts',
     categories: 'Categories',
+    category: 'Category',
     tags: 'Tags',
     home: 'Home',
     title: 'Welcome to Tinybit blog',
@@ -11,6 +12,7 @@ const i18n = {
   zh: {
     posts: '记录',
     categories: '分类',
+    category: '分类',
     tags: '标签',
     home: '首页',
     title: '欢迎来到Tinybit的博客',

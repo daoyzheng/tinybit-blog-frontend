@@ -12,7 +12,7 @@ const TagIcon = ({ tag }: Props) => {
     router.push(`tag/${tag.attributes.name}`, undefined, { locale })
   }
   return (
-    <TagIconWrapper className="border rounded-md text-center p-0.5 text-xs cursor-pointer" onClick={handleOnClick}>
+    <TagIconWrapper className="border rounded-md text-center p-0.5 text-xs cursor-pointer w-fit" onClick={handleOnClick}>
       {tag.attributes.name}
     </TagIconWrapper>
   )

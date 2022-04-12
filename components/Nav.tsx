@@ -1,28 +1,26 @@
 import Link from "next/link"
 import { useRouter } from "next/router"
+import useGetLocale from "../hooks/useGetLocale"
 import { A } from "./styles/hyperlink.styled"
 
 
 const Nav = () => {
+  const locale = useGetLocale()
   const router = useRouter()
   const { pathname } = router
   return (
     <div className="gap-2 flex items-center">
       { pathname !== '/' ?
         (<Link href="/" passHref>
-          <A>Home</A>
+          <A>{locale.home}</A>
         </Link>) : <></>}
       { pathname !== '/post' ?
         (<Link href="/post" passHref>
-          <A>Posts</A>
+          <A>{locale.posts}</A>
         </Link>) : <></>}
       { pathname !== '/category' ?
         (<Link href="/category" passHref>
-          <A>Categories</A>
-        </Link>) : <></>}
-      { pathname !== '/tag' ?
-        (<Link href="/tag" passHref>
-          <A>Tags</A>
+          <A>{locale.categories}</A>
         </Link>) : <></>}
     </div>
   )

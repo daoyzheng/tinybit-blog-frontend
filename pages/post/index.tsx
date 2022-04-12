@@ -6,6 +6,7 @@ import PostFilter from "../../components/PostFilter"
 import PostList from "../../components/PostList"
 import SortIcon from "../../components/SortIcon"
 import Title from "../../components/Titile"
+import useGetLocale from "../../hooks/useGetLocale"
 import { ICategory } from "../../interfaces/category"
 import { IPostItem } from "../../interfaces/post"
 import { IStrapiDataResponse } from "../../interfaces/strapi"
@@ -20,6 +21,7 @@ interface Props {
 }
 
 const Post : NextPage<Props> = ({ posts, categories, tags }) => {
+  const locale = useGetLocale()
   const [showPopup, setShowPopup] = useState(false)
   const [sort, setSort] = useState(descendingPublishDate)
   const handleFilterClick = () => {
@@ -35,7 +37,7 @@ const Post : NextPage<Props> = ({ posts, categories, tags }) => {
 
   return (
     <div>
-      <Title title="Posts"/>
+      <Title title={locale.posts}/>
       {/* <div className="flex justify-end mt-8 items-center gap-3">
         <input/>
         <Popup showPopup={showPopup} setShowPopup={setShowPopup} parent={<FilterIcon className="cursor-pointer" onClick={handleFilterClick}/>}>

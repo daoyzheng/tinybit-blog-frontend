@@ -7,7 +7,7 @@ import PostFilter from "../../components/PostFilter"
 import PostList from "../../components/PostList"
 import SortIcon from "../../components/SortIcon"
 import { A } from "../../components/styles/hyperlink.styled"
-import { SubTitle } from "../../components/styles/Title.styled"
+import { Title } from "../../components/styles/Title.styled"
 import { ICategory } from "../../interfaces/category"
 import { IPostItem } from "../../interfaces/post"
 import { IStrapiDataResponse } from "../../interfaces/strapi"
@@ -38,8 +38,8 @@ const Post : NextPage<Props> = ({ posts, categories, tags }) => {
   return (
     <div>
       <div className="flex justify-between items-center">
-        <SubTitle>Posts</SubTitle>
-        <div className="flex gap-3 items-center">
+        <Title>Posts</Title>
+        <div className="flex gap-2 items-center">
           <Link href="/" passHref>
             <A>Home</A>
           </Link>

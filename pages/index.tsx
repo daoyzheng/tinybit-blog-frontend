@@ -18,7 +18,7 @@ const Home: NextPage<Props> = ({ posts }) => {
     <div>
       <div className="flex justify-between items-center">
         <Title>{locale.title}</Title>
-        <div className="space-x-4 flex">
+        <div className="gap-2 flex">
           <Link href="/post" passHref>
             <A>Posts</A>
           </Link>

@@ -5,7 +5,7 @@ import Popup from "../../components/Popup"
 import PostFilter from "../../components/PostFilter"
 import PostList from "../../components/PostList"
 import SortIcon from "../../components/SortIcon"
-import Title from "../../components/Titile"
+import { TitleContainer } from "../../components/styles/Title.styled"
 import { ICategory } from "../../interfaces/category"
 import { IPostItem } from "../../interfaces/post"
 import { IStrapiDataResponse } from "../../interfaces/strapi"
@@ -35,7 +35,7 @@ const Post : NextPage<Props> = ({ posts, categories, tags }) => {
 
   return (
     <div>
-      <Title title="Posts"/>
+      <TitleContainer>Posts</TitleContainer>
       {/* <div className="flex justify-end mt-8 items-center gap-3">
         <input/>
         <Popup showPopup={showPopup} setShowPopup={setShowPopup} parent={<FilterIcon className="cursor-pointer" onClick={handleFilterClick}/>}>

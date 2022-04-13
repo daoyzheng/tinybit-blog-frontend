@@ -1,7 +1,7 @@
 import CategoryIcon from "../../components/CategoryIcon"
 import { Line } from "../../components/styles/Line.styled"
+import { TitleContainer } from "../../components/styles/Title.styled"
 import TagIcon from "../../components/TagIcon"
-import Title from "../../components/Titile"
 import { ICategory } from "../../interfaces/category"
 import { IStrapiDataResponse } from "../../interfaces/strapi"
 import { getList } from "../../utils/request"
@@ -13,7 +13,7 @@ interface Props {
 const Category = ({ categories }: Props) => {
   return (
     <div>
-      <Title title="Categories" />
+      <TitleContainer>Categories</TitleContainer>
       { categories.map(category => {
         return (
           <div key={category.id} className="mt-10 flex flex-col">

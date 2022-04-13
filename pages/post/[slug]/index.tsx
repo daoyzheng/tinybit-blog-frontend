@@ -4,8 +4,8 @@ import { getList } from "../../../utils/request"
 import { GetStaticPaths, GetServerSideProps } from 'next'
 import Custom404 from "../../404"
 import TagIcon from "../../../components/TagIcon"
-import Title from "../../../components/Titile"
 import CategoryIcon from "../../../components/CategoryIcon"
+import { TitleContainer } from "../../../components/styles/Title.styled"
 
 
 interface Props {
@@ -15,7 +15,7 @@ interface Props {
 const PostDetails = ({ postDetails }: Props) => {
   return postDetails ? (
     <div>
-      <Title title={postDetails.attributes.title}/>
+      <TitleContainer>{postDetails.attributes.title}</TitleContainer>
       <div className="mt-6 break-all">{postDetails.attributes.content}</div>
       <div className="mt-10">
         <div className="flex items-center gap-2">

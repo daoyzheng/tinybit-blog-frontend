@@ -3,8 +3,7 @@ import { getList } from '../utils/request'
 import PostList from '../components/PostList'
 import { IPostItem } from '../interfaces/post'
 import { IStrapiDataResponse } from '../interfaces/strapi'
-import { SubTitleContainer } from '../components/styles/Title.styled'
-import Title from '../components/Titile'
+import { SubTitleContainer, TitleContainer } from '../components/styles/Title.styled'
 
 interface Props {
   posts: IStrapiDataResponse<IPostItem>[]
@@ -13,7 +12,7 @@ interface Props {
 const Home: NextPage<Props> = ({ posts }) => {
   return (
     <div>
-      <Title title="Welcome to Tinybit Blog"/>
+      <TitleContainer>Welcome to Tinybit Blog</TitleContainer>
       <div className="mt-6">
         <div>Hi, I&apos;m Dao. Here is my knowledge bank and where I keep my personal records.</div>
       </div>

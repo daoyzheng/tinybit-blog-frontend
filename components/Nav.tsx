@@ -2,12 +2,15 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import { A } from "./styles/hyperlink.styled"
 
+interface Props {
+  className?: string
+}
 
-const Nav = () => {
+const Nav = ({ className }: Props) => {
   const router = useRouter()
   const { pathname } = router
   return (
-    <div className="gap-2 flex items-center">
+    <div className={`gap-4 flex items-center ${className}`}>
       { pathname !== '/' ?
         (<Link href="/" passHref>
           <A>Home</A>

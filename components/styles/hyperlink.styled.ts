@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const A = styled.a`
   color: #cb8300;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 14px;
   &:hover {
     color: #f19d04;
   }

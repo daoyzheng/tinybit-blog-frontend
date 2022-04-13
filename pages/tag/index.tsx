@@ -10,10 +10,10 @@ interface Props {
   categories: IStrapiDataResponse<ICategory>[]
 }
 
-const Category = ({ categories }: Props) => {
+const Tags = ({ categories }: Props) => {
   return (
     <div>
-      <TitleContainer>Categories</TitleContainer>
+      <TitleContainer>Tags</TitleContainer>
       { categories.map(category => {
         return (
           <div key={category.id} className="mt-10 flex flex-col">
@@ -31,7 +31,7 @@ const Category = ({ categories }: Props) => {
     </div>
   )
 }
-export default Category
+export default Tags
 
 export const getStaticProps = async () => {
   const query = {

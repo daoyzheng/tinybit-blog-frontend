@@ -19,9 +19,9 @@ const Nav = ({ className }: Props) => {
         (<Link href="/post" passHref>
           <A>Posts</A>
         </Link>) : <></>}
-      { pathname !== '/category' ?
-        (<Link href="/category" passHref>
-          <A>Categories</A>
+      { pathname !== '/tag' ?
+        (<Link href="/tag" passHref>
+          <A>Tags</A>
         </Link>) : <></>}
     </div>
   )

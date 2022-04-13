@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Image from 'next/image'
 import Nav from "./Nav"
 
@@ -8,9 +8,17 @@ interface Props {
 }
 
 const Setting = ({ onThemeToggle, className }: Props) => {
-  const [isDark, setIsDark] = useState(true)
+  const [isDark, setIsDark] = useState(false)
+  useEffect(() => {
+    const localStorageItem = window.localStorage.getItem('isDarkTheme')
+    const isDarkTheme = localStorageItem ? JSON.parse(localStorageItem) : true
+    setIsDark(isDarkTheme)
+    if (onThemeToggle) onThemeToggle(isDarkTheme)
+  }, [setIsDark, onThemeToggle])
+
   const handleThemeToggle = () => {
     if (onThemeToggle) onThemeToggle(!isDark)
+    localStorage.setItem('isDarkTheme', JSON.stringify(!isDark))
     setIsDark(!isDark)
   }
   return (

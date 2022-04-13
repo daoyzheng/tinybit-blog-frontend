@@ -40,7 +40,7 @@ export const getServerSideProps : GetServerSideProps = async (context) => {
     }
   }
   const res = await getList('api/tags', query)
-  const tag = res.data.length > 0 ? res.data[0] : undefined
+  const tag = res.data.length > 0 ? res.data[0] : null
   return {
     props: {
       tag

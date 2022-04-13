@@ -16,13 +16,13 @@ const Tags = ({ categories }: Props) => {
       <TitleContainer>Tags</TitleContainer>
       { categories.map(category => {
         return (
-          <div key={category.id} className="mt-10 flex flex-col">
+          <div key={category.id} className="mt-5 flex flex-col">
             <CategoryIcon category={category} className="mb-2"/>
             <Line/>
             <div className="flex gap-3 flex-wrap mt-2">
               {category.attributes.tags && category.attributes.tags.data.length > 0 ?
                 category.attributes.tags?.data.map(tag => <TagIcon key={tag.id} tag={tag}/>):
-                <div className="italic text-sm">No tags available</div>
+                <div className="italic text-xs">No tags available</div>
               }
             </div>
           </div>

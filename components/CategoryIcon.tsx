@@ -11,8 +11,7 @@ interface Props {
 const CategoryIcon = ({ category, className }: Props) => {
   const router = useRouter()
   const handleOnClick = () => {
-    const { locale } = router
-    router.push(`category/${category.attributes.name}`, undefined, { locale })
+    router.push(`category/${category.attributes.name}`)
   }
   return (
     <CategoryIconWrapper className={`rounded-md text-center p-0.5 text-sm cursor-pointer w-fit ${className}`} onClick={handleOnClick}>

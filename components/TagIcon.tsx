@@ -8,8 +8,7 @@ interface Props {
 const TagIcon = ({ tag }: Props) => {
   const router = useRouter()
   const handleOnClick = () => {
-    const { locale } = router
-    router.push(`tag/${tag.attributes.name}`, undefined, { locale })
+    router.push(`tag/${tag.attributes.name}`)
   }
   return (
     <TagIconWrapper className="border rounded-md text-center p-0.5 text-xs cursor-pointer w-fit" onClick={handleOnClick}>

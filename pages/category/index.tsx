@@ -2,7 +2,6 @@ import CategoryIcon from "../../components/CategoryIcon"
 import { Line } from "../../components/styles/Line.styled"
 import TagIcon from "../../components/TagIcon"
 import Title from "../../components/Titile"
-import useGetLocale from "../../hooks/useGetLocale"
 import { ICategory } from "../../interfaces/category"
 import { IStrapiDataResponse } from "../../interfaces/strapi"
 import { getList } from "../../utils/request"
@@ -12,10 +11,9 @@ interface Props {
 }
 
 const Category = ({ categories }: Props) => {
-  const locale = useGetLocale()
   return (
     <div>
-      <Title title={locale.categories} />
+      <Title title="Categories" />
       { categories.map(category => {
         return (
           <div key={category.id} className="mt-10 flex flex-col">

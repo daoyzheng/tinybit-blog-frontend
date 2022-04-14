@@ -13,7 +13,7 @@ interface Props {
 const Category = ({ category }: Props) => {
   return category ? (
     <div>
-      <TitleContainer>{category.attributes.name}</TitleContainer>
+      <TitleContainer>{category.attributes.name} / posts</TitleContainer>
       <div className="mt-5">
         {category.attributes.posts && category.attributes.posts.data.length > 0 ?
           <PostList posts={category.attributes.posts?.data} /> :

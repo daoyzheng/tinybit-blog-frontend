@@ -13,7 +13,7 @@ interface Props {
 const Tag = ({ tag }: Props) => {
   return tag ? (
     <div>
-      <TitleContainer>{tag.attributes.name}</TitleContainer>
+      <TitleContainer>{tag.attributes.name} / posts</TitleContainer>
       <div className="mt-5">
         {tag.attributes.posts && tag.attributes.posts.data.length > 0 ?
           <PostList posts={tag.attributes.posts?.data} /> :

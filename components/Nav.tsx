@@ -15,8 +15,8 @@ const Nav = ({ className }: Props) => {
         (<Link href="/" passHref>
           <A>Home</A>
         </Link>) : <></>}
-      { pathname !== '/post' ?
-        (<Link href="/post" passHref>
+      { !pathname.includes('/post/page') ?
+        (<Link href="/post/page/1" passHref>
           <A>Posts</A>
         </Link>) : <></>}
       { pathname !== '/tag' ?

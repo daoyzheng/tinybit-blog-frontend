@@ -4,12 +4,14 @@ import PostList from '../components/PostList'
 import { IPostItem } from '../interfaces/post'
 import { IStrapiDataResponse } from '../interfaces/strapi'
 import { SubTitleContainer, TitleContainer } from '../components/styles/Title.styled'
+import { descendingPublishDate } from '../utils/specifications'
 
 interface Props {
   posts: IStrapiDataResponse<IPostItem>[]
 }
 
 const Home: NextPage<Props> = ({ posts }) => {
+  console.log('lkj', posts)
   return (
     <div>
       <TitleContainer>Welcome to Tinybit Blog</TitleContainer>
@@ -24,8 +26,15 @@ const Home: NextPage<Props> = ({ posts }) => {
   )
 }
 
-export const getStaticProps = async () => {
-  const posts = await getList<IPostItem>('api/posts')
+export const getServerSideProps = async () => {
+  const query = {
+    sort: descendingPublishDate,
+    pagination: {
+      page: 1,
+      pageSize: 5
+    }
+  }
+  const posts = await getList<IPostItem>('api/posts', query)
   return {
     props: {
       posts: posts.data

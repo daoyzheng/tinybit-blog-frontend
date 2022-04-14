@@ -10,6 +10,7 @@ import { IStrapiDataResponse } from "../../../../interfaces/strapi"
 import { ITag } from "../../../../interfaces/tag"
 import { getList } from "../../../../utils/request"
 import { descendingPublishDate, ascendingPublishDate } from '../../../../utils/specifications'
+import Custom404 from "../../../404"
 
 interface Props {
   posts: IStrapiDataResponse<IPostItem>[]
@@ -22,7 +23,7 @@ const Post : NextPage<Props> = ({ posts, pageCount, currentPage }: Props) => {
   const handlePageClick = (pageNumber: number) => {
     if (pageNumber != currentPage) router.push(`/post/page/${pageNumber}`)
   }
-  return (
+  return currentPage <= pageCount ?(
     <div>
       <TitleContainer>Posts</TitleContainer>
       {posts && posts.length > 0 ? (
@@ -30,16 +31,17 @@ const Post : NextPage<Props> = ({ posts, pageCount, currentPage }: Props) => {
           <div className="mt-5">
             <PostList posts={posts} showDate/>
           </div>
-          <div className="flex items-center justify-center gap-2 flex-wrap break-all mt-20">
-            {Array.from({length: pageCount}, (_, i) => i + 1).map(pageNumber =>
-              <Pagination key={pageNumber} active={pageNumber == currentPage} onClick={() => handlePageClick(pageNumber)}>{pageNumber}</Pagination>
-            )}
-          </div>
+          { pageCount > 1 ?
+            <div className="flex items-center justify-center gap-2 flex-wrap break-all mt-20">
+              {Array.from({length: pageCount}, (_, i) => i + 1).map(pageNumber =>
+                <Pagination key={pageNumber} active={pageNumber == currentPage} onClick={() => handlePageClick(pageNumber)}>{pageNumber}</Pagination>
+              )}
+            </div> : ''}
         </>
         ) : <div className="text-xs italic">No posts</div>
       }
     </div>
-  )
+  ) : <Custom404 />
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -49,7 +51,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     sort: descendingPublishDate,
     pagination: {
       page: currentPage,
-      pageSize: 1,
+      pageSize: 50,
       withCount: true
     }
   }

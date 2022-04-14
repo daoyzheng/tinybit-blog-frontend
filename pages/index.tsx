@@ -11,12 +11,11 @@ interface Props {
 }
 
 const Home: NextPage<Props> = ({ posts }) => {
-  console.log('lkj', posts)
   return (
     <div>
       <TitleContainer>Welcome to Tinybit Blog</TitleContainer>
       <div className="mt-6">
-        <div>Hi, I&apos;m Dao. Here is my knowledge bank and where I keep my personal records.</div>
+        <div>Hi, I&apos;m Dao. Here is my knowledge bank and where I keep my personal records. Explore more at Tinybit</div>
       </div>
       <SubTitleContainer className="mt-5">Recent posts</SubTitleContainer>
       <div className="mt-5">

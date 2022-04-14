@@ -1,11 +1,13 @@
 import Head from 'next/head'
+import Copyright from './Copyright'
 import { LayoutContainer } from './styles/Layout.styled'
 
 interface Props {
   setting?: React.ReactNode
+  isDark: boolean
 }
 
-const Layout : React.FC<Props> = ({ children, setting }) => {
+const Layout : React.FC<Props> = ({ children, setting, isDark }) => {
   return (
     <LayoutContainer>
       <Head>
@@ -20,6 +22,11 @@ const Layout : React.FC<Props> = ({ children, setting }) => {
           <main>
             {children}
           </main>
+        </div>
+      </div>
+      <div className="flex justify-center">
+        <div className="max-w-screen-md w-full mt-52">
+          <Copyright isDark={isDark}/>
         </div>
       </div>
     </LayoutContainer>

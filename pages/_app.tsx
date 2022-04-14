@@ -7,15 +7,17 @@ import { useState } from 'react'
 import { THEME } from '../utils/constants'
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const [isDark, setIsDark] = useState(false)
   const [theme, setTheme] = useState(THEME.dark)
 
   const themeToggler = (isDark: boolean) => {
+    setIsDark(isDark)
     isDark ? setTheme(THEME.dark) : setTheme(THEME.light)
   }
 
   return (
     <Theme theme={theme}>
-      <Layout setting={<Setting onThemeToggle={themeToggler} className="mb-6 flex justify-end lg:mr-72"/>}>
+      <Layout isDark={isDark} setting={<Setting onThemeToggle={themeToggler} className="mb-6 flex justify-end lg:mr-72"/>}>
         <Component {...pageProps} />
       </Layout>
     </Theme>

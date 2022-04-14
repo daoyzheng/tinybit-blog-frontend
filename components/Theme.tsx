@@ -33,7 +33,7 @@ const Theme: React.FC<Props> = ({ children, theme }) => {
     tagIconColor: '#F87171',
     tagIconBorderColor: '#525252',
     sortIconColor: 'rgb(158, 158, 158)',
-    categoryIconColor: '#71b3f8'
+    categoryIconColor: '#71b3f8',
   }
 
 

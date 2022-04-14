@@ -1,7 +1,7 @@
 import { IPostItem } from "../../../interfaces/post"
 import { IStrapiDataResponse } from "../../../interfaces/strapi"
 import { getList } from "../../../utils/request"
-import { GetStaticPaths, GetServerSideProps } from 'next'
+import { GetServerSideProps } from 'next'
 import Custom404 from "../../404"
 import TagIcon from "../../../components/TagIcon"
 import CategoryIcon from "../../../components/CategoryIcon"

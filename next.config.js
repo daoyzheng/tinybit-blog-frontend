@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
-    BASE_URL: 'http://localhost:1337'
+    BASE_URL: process.env.BASE_URL
   },
   reactStrictMode: true,
   async redirects() {

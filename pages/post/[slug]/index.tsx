@@ -1,18 +1,28 @@
 import { IPostItem } from "../../../interfaces/post"
 import { IStrapiDataResponse } from "../../../interfaces/strapi"
-import { getList } from "../../../utils/request"
+import { getList, updateUpvote } from "../../../utils/request"
 import { GetStaticProps } from 'next'
 import Custom404 from "../../404"
 import TagIcon from "../../../components/TagIcon"
 import CategoryIcon from "../../../components/CategoryIcon"
 import ReactMarkdown from 'react-markdown'
 import { TitleContainer } from "../../../components/styles/Title.styled"
+import Upvote from "../../../components/Upvote"
+import { IUpdateUpvotePayload } from "../../../interfaces/upvote"
 
 interface Props {
   postDetails: IStrapiDataResponse<IPostItem>
 }
 
 const PostDetails = ({ postDetails }: Props) => {
+  const handleOnClick = async (upvotes: number, upvoteId: number) => {
+    const payload: IUpdateUpvotePayload = {
+      data: {
+        count: upvotes
+      }
+    }
+    await updateUpvote(`api/upvotes/${upvoteId}`, payload)
+  }
   return postDetails ? (
     <div>
       <TitleContainer>{postDetails.attributes.title}</TitleContainer>
@@ -23,11 +33,14 @@ const PostDetails = ({ postDetails }: Props) => {
           <div>Category: </div>
           <CategoryIcon category={postDetails.attributes.category.data} />
         </div>
-        <div className="flex items-center gap-2 flex-wrap mt-2">
-          <div>Tags: </div>
-          <div className="flex gap-1 items-center flex-wrap">
-            {postDetails.attributes.tags.data.map(tag => <TagIcon key={tag.id} tag={tag}/>)}
+        <div>
+          <div className="flex items-center gap-2 flex-wrap mt-2">
+            <div>Tags: </div>
+            <div className="flex gap-1 items-center flex-wrap">
+              {postDetails.attributes.tags.data.map(tag => <TagIcon key={tag.id} tag={tag}/>)}
+            </div>
           </div>
+          <Upvote onClick={handleOnClick} className="cursor-pointer" upvote={postDetails.attributes.upvote.data}/>
         </div>
       </div>
     </div>

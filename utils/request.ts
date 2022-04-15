@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from "axios"
 import { IStrapiListResponse, IStrapiSingleResponse } from "../interfaces/strapi"
 import qs from 'qs'
+import { IUpdateUpvotePayload, IUpvote } from "../interfaces/upvote"
 
 type AllowableTypes = 'get' | 'GET' | 'post' | 'POST' | 'put' | 'PUT' | 'PATCH' | 'patch' | 'delete' | 'DELETE'
 interface IRequest {
@@ -13,7 +14,7 @@ interface IRequest {
 const baseUrl = process.env.BASE_URL
 const request = async <T>({ url, method, params, body, headers } : IRequest) : Promise<AxiosResponse<T>> => {
   params = params || {}
-  if (method === 'get' && url?.includes('post')) params = { ...params, populate: ['category', 'tags']}
+  if (method === 'get' && url?.includes('post')) params = { ...params, populate: ['category', 'tags', 'upvote']}
   const queryString = qs.stringify(params)
 
   headers = headers || {}
@@ -24,7 +25,7 @@ const request = async <T>({ url, method, params, body, headers } : IRequest) : P
 
   const response = await axios(`${baseUrl}/${url}${queryString ? `?${queryString}` : ''}`, {
     method,
-    ...(body && { body }),
+    ...(body && { data: body }),
     headers: headers,
   })
 
@@ -40,5 +41,11 @@ export const getList = async <T>(url: string, params?: Record<string, object>): 
 export const get = async <T>(url: string, params?: Record<string, object>): Promise<IStrapiSingleResponse<T>> => {
   const method = 'get'
   const res = await request<IStrapiSingleResponse<T>>({ url, params, method })
+  return res.data
+}
+
+export const updateUpvote = async <IUpvote>(url: string, payload: IUpdateUpvotePayload): Promise<IStrapiSingleResponse<IUpvote>> => {
+  const method = 'put'
+  const res = await request<IStrapiSingleResponse<IUpvote>>({ url, method, body: payload })
   return res.data
 }

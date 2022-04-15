@@ -4,6 +4,7 @@ import TagIcon from './TagIcon'
 import Link from 'next/link'
 import { PostItemLink } from "./styles/hyperlink.styled"
 import CategoryIcon from "./CategoryIcon"
+import Upvote from "./Upvote"
 
 interface Props {
   post: IStrapiDataResponse<IPostItem>
@@ -23,6 +24,7 @@ const PostItem = ({ post, showDate }: Props) => {
             <Link href="/post/[slug]" as={`/post/${post.attributes.slug}`} passHref>
               <PostItemLink className="break-all">{post.attributes.title}</PostItemLink>
             </Link>
+            <Upvote className="mt-1" upvote={post.attributes.upvote.data}/>
           </div>
           <div className="flex gap-1 flex-wrap mt-1">
             {post.attributes.tags.data.map(tag => <TagIcon key={tag.id} tag={tag}/>)}

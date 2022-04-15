@@ -53,7 +53,7 @@ export const getStaticPaths = async () => {
   const query = {
     populate: {
       posts: {
-        populate: ['tags', 'category']
+        populate: ['tags', 'category', 'upvote']
       }
     }
   }

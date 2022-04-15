@@ -28,20 +28,20 @@ const PostDetails = ({ postDetails }: Props) => {
       <TitleContainer>{postDetails.attributes.title}</TitleContainer>
       <div className="text-sm mt-2">{new Date(postDetails.attributes.publishedAt).toLocaleDateString('en-CA')}</div>
       <ReactMarkdown className="mt-6">{postDetails.attributes.content}</ReactMarkdown>
-      <div className="mt-10">
-        <div className="flex items-center gap-2">
-          <div>Category: </div>
-          <CategoryIcon category={postDetails.attributes.category.data} />
-        </div>
+      <div className="mt-10 flex justify-between items-start">
         <div>
+          <div className="flex items-center gap-2">
+            <div>Category: </div>
+            <CategoryIcon category={postDetails.attributes.category.data} />
+          </div>
           <div className="flex items-center gap-2 flex-wrap mt-2">
             <div>Tags: </div>
             <div className="flex gap-1 items-center flex-wrap">
               {postDetails.attributes.tags.data.map(tag => <TagIcon key={tag.id} tag={tag}/>)}
             </div>
           </div>
-          <Upvote onClick={handleOnClick} className="cursor-pointer" upvote={postDetails.attributes.upvote.data}/>
         </div>
+        <Upvote onClick={handleOnClick} isClickable upvote={postDetails.attributes.upvote.data} dense={false}/>
       </div>
     </div>
   ) : <Custom404/>

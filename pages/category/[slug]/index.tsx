@@ -1,4 +1,4 @@
-import { GetServerSideProps } from "next"
+import { GetStaticProps } from "next"
 import PostList from "../../../components/PostList"
 import { TitleContainer } from "../../../components/styles/Title.styled"
 import { ICategory } from "../../../interfaces/category"
@@ -25,7 +25,7 @@ const Category = ({ category }: Props) => {
 }
 export default Category
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticProps: GetStaticProps = async (context) => {
   if (!context.params) return { props: {}}
   const slug = context.params.slug
   const query = {
@@ -40,11 +40,30 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       }
     }
   }
-  const res = await getList('api/categories', query)
+  const res = await getList<ICategory>('api/categories', query)
   const category = res.data.length > 0 ? res.data[0] : null
   return {
     props: {
       category
-    }
+    },
+    revalidate: 10
   }
+}
+
+export const getStaticPaths = async () => {
+  const query = {
+    populate: {
+      posts: {
+        populate: ['tags', 'category']
+      }
+    },
+  }
+  const res = await getList<ICategory>('api/categories', query)
+  const slugs = res.data.map(category => category.attributes.slug)
+  const paths = slugs.map(slug => ({ params: {slug: slug}}))
+  return {
+    paths,
+    fallback: false
+  }
+
 }

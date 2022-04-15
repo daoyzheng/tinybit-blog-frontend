@@ -1,15 +1,12 @@
-import { GetServerSideProps, NextPage } from "next"
+import { GetStaticProps, NextPage } from "next"
 import { useRouter } from "next/router"
-import { useState } from "react"
 import PostList from "../../../../components/PostList"
 import { Pagination } from "../../../../components/styles/Pagination.styled"
 import { TitleContainer } from "../../../../components/styles/Title.styled"
-import { ICategory } from "../../../../interfaces/category"
 import { IPostItem } from "../../../../interfaces/post"
 import { IStrapiDataResponse } from "../../../../interfaces/strapi"
-import { ITag } from "../../../../interfaces/tag"
 import { getList } from "../../../../utils/request"
-import { descendingPublishDate, ascendingPublishDate } from '../../../../utils/specifications'
+import { descendingPublishDate } from '../../../../utils/specifications'
 import Custom404 from "../../../404"
 
 interface Props {
@@ -23,7 +20,7 @@ const Post : NextPage<Props> = ({ posts, pageCount, currentPage }: Props) => {
   const handlePageClick = (pageNumber: number) => {
     if (pageNumber != currentPage) router.push(`/post/page/${pageNumber}`)
   }
-  return currentPage <= pageCount ?(
+  return currentPage <= pageCount ? (
     <div>
       <TitleContainer>Posts</TitleContainer>
       {posts && posts.length > 0 ? (
@@ -44,7 +41,7 @@ const Post : NextPage<Props> = ({ posts, pageCount, currentPage }: Props) => {
   ) : <Custom404 />
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticProps: GetStaticProps = async (context) => {
   if (!context.params) return {props: {posts: [], pageCount: 0}}
   const currentPage = context.params.pageNumber
   const query = {
@@ -55,18 +52,34 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       withCount: true
     }
   }
-  const [
-    posts,
-  ] = await Promise.all([
-    getList<IPostItem>('api/posts', query),
-  ])
+  const posts = await getList<IPostItem>('api/posts', query)
   const { pageCount } = posts.meta.pagination
   return {
     props: {
       posts: posts.data,
       pageCount,
       currentPage
+    },
+    revalidate: 10
+  }
+}
+
+export const getStaticPaths = async () => {
+  const query = {
+    sort: descendingPublishDate,
+    pagination: {
+      page: 1,
+      pageSize: 50,
+      withCount: true
     }
+  }
+  const posts = await getList<IPostItem>('api/posts', query)
+  const { pageCount } = posts.meta.pagination
+  const pageNumbers = Array.from({length: pageCount}, (_, i) => i + 1)
+  const paths = pageNumbers.map(number => ({ params: { pageNumber: number.toString() }}))
+  return {
+    paths,
+    fallback: false
   }
 }
 

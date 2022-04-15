@@ -1,12 +1,11 @@
 import { IPostItem } from "../../../interfaces/post"
 import { IStrapiDataResponse } from "../../../interfaces/strapi"
 import { getList } from "../../../utils/request"
-import { GetServerSideProps } from 'next'
+import { GetStaticProps } from 'next'
 import Custom404 from "../../404"
 import TagIcon from "../../../components/TagIcon"
 import CategoryIcon from "../../../components/CategoryIcon"
 import { TitleContainer } from "../../../components/styles/Title.styled"
-
 
 interface Props {
   postDetails: IStrapiDataResponse<IPostItem>
@@ -16,6 +15,7 @@ const PostDetails = ({ postDetails }: Props) => {
   return postDetails ? (
     <div>
       <TitleContainer>{postDetails.attributes.title}</TitleContainer>
+      <div className="text-sm mt-2">{new Date(postDetails.attributes.publishedAt).toLocaleDateString('en-CA')}</div>
       <div className="mt-6 break-all">{postDetails.attributes.content}</div>
       <div className="mt-10">
         <div className="flex items-center gap-2">
@@ -33,7 +33,7 @@ const PostDetails = ({ postDetails }: Props) => {
   ) : <Custom404/>
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticProps: GetStaticProps = async (context) => {
   const { params } = context
   let slug = ''
   if (params) slug = params.slug as string
@@ -49,7 +49,33 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {
       postDetails
+    },
+    revalidate: 10
+  }
+}
+
+export const getStaticPaths = async () => {
+  let currentPage = 1
+  let pageCount = 1
+  const slugs: string[] = []
+  while(currentPage <= pageCount) {
+    const query = {
+      pagination: {
+        page: currentPage,
+        pageSize: 100,
+        withCount: true
+      }
     }
+    const res = await getList<IPostItem>('api/posts', query)
+    const currentSlugs = res.data.map(post => post.attributes.slug)
+    slugs.push(...currentSlugs)
+    pageCount = res.meta.pagination.pageCount
+    currentPage++
+  }
+  const paths = slugs.map(slug => ({ params: {slug: slug}}))
+  return {
+    paths,
+    fallback: false
   }
 }
 

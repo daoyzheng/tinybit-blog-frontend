@@ -1,4 +1,4 @@
-import { GetServerSideProps } from "next"
+import { GetStaticProps } from "next"
 import PostList from "../../../components/PostList"
 import { TitleContainer } from "../../../components/styles/Title.styled"
 import { IStrapiDataResponse } from "../../../interfaces/strapi"
@@ -24,7 +24,7 @@ const Tag = ({ tag }: Props) => {
   ) : <Custom404/>
 }
 
-export const getServerSideProps : GetServerSideProps = async (context) => {
+export const getStaticProps : GetStaticProps = async (context) => {
   if (!context.params) return { props: {}}
   const slug = context.params.slug
   const query = {
@@ -39,12 +39,30 @@ export const getServerSideProps : GetServerSideProps = async (context) => {
       }
     }
   }
-  const res = await getList('api/tags', query)
+  const res = await getList<ITag>('api/tags', query)
   const tag = res.data.length > 0 ? res.data[0] : null
   return {
     props: {
       tag
+    },
+    revalidate: 10
+  }
+}
+
+export const getStaticPaths = async () => {
+  const query = {
+    populate: {
+      posts: {
+        populate: ['tags', 'category']
+      }
     }
+  }
+  const res = await getList<ITag>('api/tags', query)
+  const slugs = res.data.map(tag => tag.attributes.slug)
+  const paths = slugs.map(slug => ({ params: {slug: slug}}))
+  return {
+    paths,
+    fallback: false
   }
 }
 

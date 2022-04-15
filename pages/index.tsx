@@ -25,7 +25,7 @@ const Home: NextPage<Props> = ({ posts }) => {
   )
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const query = {
     sort: descendingPublishDate,
     pagination: {
@@ -37,7 +37,8 @@ export const getServerSideProps = async () => {
   return {
     props: {
       posts: posts.data
-    }
+    },
+    revalidate: 10
   }
 }
 

@@ -13,7 +13,7 @@ const PostItem = ({ post, showDate }: Props) => {
   return (
     <div className="flex">
       <div className="flex flex-row space-x-6">
-        { showDate ? <div>{new Date(post.attributes.publishedAt).toLocaleDateString('en')}</div> : <></>}
+        { showDate ? <div>{new Date(post.attributes.publishedAt).toLocaleDateString('en-CA')}</div> : <></>}
         <div>
           <div className="flex items-center gap-2">
             <div className="flex items-center">

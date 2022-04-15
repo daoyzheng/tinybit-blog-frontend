@@ -33,7 +33,7 @@ const Tags = ({ categories }: Props) => {
 }
 export default Tags
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const query = {
     populate: ['tags']
   }
@@ -45,6 +45,7 @@ export const getServerSideProps = async () => {
   return {
     props: {
       categories: categories.data,
-    }
+    },
+    revalidate: 10
   }
 }

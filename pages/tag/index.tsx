@@ -14,7 +14,7 @@ const Tags = ({ categories }: Props) => {
   return (
     <div>
       <TitleContainer>Tags</TitleContainer>
-      { categories.map(category => {
+      { categories.length > 0 ? categories.map(category => {
         return (
           <div key={category.id} className="mt-5 flex flex-col">
             <CategoryIcon category={category} className="mb-2"/>
@@ -27,7 +27,7 @@ const Tags = ({ categories }: Props) => {
             </div>
           </div>
         )
-      })}
+      }) : <div>No tags available</div>}
     </div>
   )
 }

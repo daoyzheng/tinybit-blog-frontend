@@ -30,7 +30,7 @@ export const getStaticProps : GetStaticProps = async (context) => {
   const query = {
     populate: {
       posts: {
-        populate: ['tags', 'category']
+        populate: ['tags', 'category', 'upvote']
       }
     },
     filters: {

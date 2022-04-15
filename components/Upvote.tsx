@@ -28,14 +28,14 @@ const Upvote = ({ className, upvote, onClick, isClickable=false, dense=true }: P
   const handleOnClick = () => {
     onClick && onClick(newUpvotes + 1, upvote.id)
   }
-  return upvote.attributes.count > 0 || onClick ? (
+  return (
     <div className={`${className} flex items-center gap-1 w-fit`} >
       <UpvoteWrapper className={`flex items-center ${isClickable ? 'cursor-pointer' : ''}`} onClick={() => countTimer()}>
         <Image src="/heart.png" alt="like" width={dense ? '15' : '20'} height={dense ? '15' : '20'} />
       </UpvoteWrapper>
       <div className="text-xs">{newUpvotes}</div>
     </div>
-  ) : <></>
+  )
 }
 
 export default Upvote

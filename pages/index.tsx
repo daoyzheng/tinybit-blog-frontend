@@ -30,7 +30,7 @@ export const getStaticProps = async () => {
     sort: descendingPublishDate,
     pagination: {
       page: 1,
-      pageSize: 5
+      pageSize: 3
     }
   }
   const posts = await getList<IPostItem>('api/posts', query)

@@ -18,9 +18,9 @@ const Home: NextPage<Props> = ({ posts }) => {
         <div>Hi, I&apos;m Dao. Here is my knowledge bank and where I keep my personal records. Explore more at Tinybit</div>
       </div>
       <SubTitleContainer className="mt-5">Recent posts</SubTitleContainer>
-      <div className="mt-5">
+      { posts.length > 0 ? (<div className="mt-5">
         <PostList posts={posts} />
-      </div>
+      </div>) : <div className="text-xs italic">No recent posts</div>}
     </div>
   )
 }

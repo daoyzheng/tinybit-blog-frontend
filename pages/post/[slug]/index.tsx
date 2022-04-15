@@ -5,6 +5,7 @@ import { GetStaticProps } from 'next'
 import Custom404 from "../../404"
 import TagIcon from "../../../components/TagIcon"
 import CategoryIcon from "../../../components/CategoryIcon"
+import ReactMarkdown from 'react-markdown'
 import { TitleContainer } from "../../../components/styles/Title.styled"
 
 interface Props {
@@ -16,7 +17,7 @@ const PostDetails = ({ postDetails }: Props) => {
     <div>
       <TitleContainer>{postDetails.attributes.title}</TitleContainer>
       <div className="text-sm mt-2">{new Date(postDetails.attributes.publishedAt).toLocaleDateString('en-CA')}</div>
-      <div className="mt-6 break-all">{postDetails.attributes.content}</div>
+      <ReactMarkdown className="mt-6">{postDetails.attributes.content}</ReactMarkdown>
       <div className="mt-10">
         <div className="flex items-center gap-2">
           <div>Category: </div>

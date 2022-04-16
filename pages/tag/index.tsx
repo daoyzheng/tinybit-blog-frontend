@@ -27,7 +27,7 @@ const Tags = ({ categories }: Props) => {
             </div>
           </div>
         )
-      }) : <div>No tags available</div>}
+      }) : <div className="text-xs italic">No tags available</div>}
     </div>
   )
 }

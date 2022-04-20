@@ -9,6 +9,7 @@ import ReactMarkdown from 'react-markdown'
 import { TitleContainer } from "../../../components/styles/Title.styled"
 import Upvote from "../../../components/Upvote"
 import { IUpdateUpvotePayload } from "../../../interfaces/upvote"
+import gfm from 'remark-gfm'
 
 interface Props {
   postDetails: IStrapiDataResponse<IPostItem>
@@ -27,7 +28,7 @@ const PostDetails = ({ postDetails }: Props) => {
     <div>
       <TitleContainer>{postDetails.attributes.title}</TitleContainer>
       <div className="text-sm mt-2">{new Date(postDetails.attributes.publishedAt).toLocaleDateString('en-CA')}</div>
-      <ReactMarkdown className="mt-6">{postDetails.attributes.content}</ReactMarkdown>
+      <ReactMarkdown className="mt-6" remarkPlugins={[gfm]}>{postDetails.attributes.content}</ReactMarkdown>
       <div className="mt-10 flex justify-between items-start">
         <div>
           <div className="flex items-center gap-2">

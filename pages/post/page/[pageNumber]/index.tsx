@@ -79,7 +79,7 @@ export const getStaticPaths = async () => {
   const paths = pageNumbers.map(number => ({ params: { pageNumber: number.toString() }}))
   return {
     paths,
-    fallback: false
+    fallback: 'blocking'
   }
 }
 

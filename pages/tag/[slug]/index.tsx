@@ -29,9 +29,9 @@ export const getStaticProps : GetStaticProps = async (context) => {
   if (!context.params) return { props: {}}
   const slug = context.params.slug
   const query = {
-    sort: descendingPublishDate,
     populate: {
       posts: {
+        sort: descendingPublishDate,
         populate: ['tags', 'category', 'upvote']
       }
     },

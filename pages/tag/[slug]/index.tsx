@@ -4,6 +4,7 @@ import { TitleContainer } from "../../../components/styles/Title.styled"
 import { IStrapiDataResponse } from "../../../interfaces/strapi"
 import { ITag } from "../../../interfaces/tag"
 import { getList } from "../../../utils/request"
+import { descendingPublishDate } from "../../../utils/specifications"
 import Custom404 from "../../404"
 
 interface Props {
@@ -28,6 +29,7 @@ export const getStaticProps : GetStaticProps = async (context) => {
   if (!context.params) return { props: {}}
   const slug = context.params.slug
   const query = {
+    sort: descendingPublishDate,
     populate: {
       posts: {
         populate: ['tags', 'category', 'upvote']

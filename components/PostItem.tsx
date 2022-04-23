@@ -13,10 +13,10 @@ interface Props {
 const PostItem = ({ post, showDate }: Props) => {
   return (
     <div className="flex">
-      <div className="flex flex-row space-x-6">
+      <div className="flex flex-row space-x-6 whitespace-nowrap">
         { showDate ? <div>{new Date(post.attributes.publishedAt).toLocaleDateString('en-CA')}</div> : <></>}
         <div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-start gap-2 flex-wrap">
             <div className="flex items-center">
               <CategoryIcon category={post.attributes.category.data}/>
               <div>|</div>

@@ -6,7 +6,7 @@ interface Props {
 
 const Copyright = ({ isDark }: Props) => {
   return (
-    <div>
+    <div className="mb-24">
       <div className="text-xs">
         Copyright © 2022 Dao Yuan Zheng
       </div>

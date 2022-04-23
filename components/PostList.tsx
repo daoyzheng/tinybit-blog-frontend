@@ -10,7 +10,7 @@ interface Props {
 const PostList = ({ posts, showDate } : Props) => {
   return (
     <div>
-      <div className="space-y-3">
+      <div className="space-y-4">
         {posts.map(post =>
           <PostItem post={post} key={post.id} showDate={showDate}/>
         )}

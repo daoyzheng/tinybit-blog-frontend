@@ -11,9 +11,14 @@ const Layout : React.FC<Props> = ({ children, setting, isDark }) => {
   return (
     <LayoutContainer>
       <Head>
-        <title>Tinybit Blog</title>
-        <meta name="description" content="Tinybit blog of programming, web development, learning and other things in life" />
+        <title>Dao Zheng Blog</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="description" content="Dao's blog of programming, web development, learning and other things in life" />
         <meta name="keywords" content="web development, programming, lifestyle" />
+        <meta property="og:title" content="Dao Zheng Blog"/>
+        <meta name="og:description" content="Dao's blog of programming, web development, learning and other things in life" />
+        <meta property="og:url" content="https://daozheng.me/"/>
+        <meta property="og:type" content="website"/>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>{setting}</div>

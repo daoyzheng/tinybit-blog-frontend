@@ -1,9 +1,13 @@
 import styled from "styled-components";
 
-export const A = styled.a`
+interface AProps {
+  large?: boolean
+}
+
+export const A = styled.a<AProps>`
   color: #cb8300;
   cursor: pointer;
-  font-size: 14px;
+  font-size: ${props => props.large ? '15px' : '14px'};
   &:hover {
     color: #f19d04;
   }
